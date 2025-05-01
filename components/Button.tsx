@@ -1,19 +1,65 @@
-import Link, { LinkProps } from 'next/link';
+import { ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from "react";
+import React from "react";
+import Link from "next/link";
+import clsx from "clsx";
+import cardStyles from "@/app/styles/cardStyles";
 
-export interface ButtonProps extends LinkProps {
+type CommonProps = {
+	color?: "primary" | "secondary";
+	className?: string;
 	children: React.ReactNode;
-	color: 'primary' | 'secondary';
-}
+};
 
-export default function Button({ children, color, ...props }: ButtonProps) {
+// Typ pro <a>
+type AnchorButtonProps = {
+	href: string;
+	onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+} & AnchorHTMLAttributes<HTMLAnchorElement> &
+	CommonProps;
+
+// Typ pro <button>
+type NativeButtonProps = {
+	href?: undefined;
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+} & ButtonHTMLAttributes<HTMLButtonElement> &
+	CommonProps;
+
+const Button: FC<ButtonProps> = ({
+	color = "primary",
+	href,
+	className = "",
+	children,
+	...props
+}) => {
+	const combinedClassName = clsx(
+		cardStyles.buttonBase,
+		cardStyles.buttonVariants[color].default,
+		cardStyles.buttonVariants[color].hover,
+		cardStyles.buttonVariants[color].active,
+		className
+	);
+
+	if (href) {
+		return (
+			<Link
+				href={href}
+				className={combinedClassName}
+				{...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+			>
+				{children}
+			</Link>
+		);
+	}
+
 	return (
-		<Link
-			{...props}
-			className={`p-2.5 rounded-lg font-bold ${
-				color === 'primary' ? 'bg-brand-primary text-text-tertiary' : 'bg-pink-200 text-amber-700'
-			}`}
+		<button
+			className={combinedClassName}
+			{...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
 		>
 			{children}
-		</Link>
+		</button>
 	);
-}
+};
+
+export default Button;
+export type ButtonProps = AnchorButtonProps | NativeButtonProps;
