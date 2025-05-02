@@ -1,25 +1,24 @@
-# Netvor Frontend Interview Assignment
+# React Card and Button Components
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This project demonstrates the usage of reusable React components, including a `Card` component and a customizable `Button` component. The app is built using Next.js and Tailwind CSS for styling.
 
-## Getting Started
+## Technologies Used
+- **React**: JavaScript library for building user interfaces.
+- **Next.js**: React framework for server-side rendering and static site generation.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **clsx**: Utility for constructing `className` strings conditionally.
+- **TypeScript**: For type safety and improved development experience.
 
-Run `yarn dev` to start the development server on [http://localhost:3000](http://localhost:3000).
+## Features
+- `Card`: Displays an image, title, description, and action buttons with customizable behavior.
+- `Button`: A flexible button component that can function as a link or a button with various styles.
+- Navigation via URL constants for easy link management.
 
-## The Task
+## Installation
 
-The task is explained in Figma:
-
-https://www.figma.com/design/oihs5sV9KwO2uAdKJppDKV/Netvor-Frontend-Interview-Assignment?node-id=0-1&t=K0gWZRc3TePNaXf6-1
-
-Feel free to duplicate the Figma file to your drafts to be able to inspect the design more closely.
-
-The Button component is not fully implemented, so you will need to finish it.
-
-You can try to replicate the Demo frame from Figma. The design is not pixel-perfect, so don't worry if it's not 100% the same.
-
-You can edit any file in the project. And if you see any code that you think could be improved, feel free to refactor it.
-
-## Submission
-
-Please submit your solution as a pull request to this repository.
+1. Clone the repository:
+   
+```bash
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+```
